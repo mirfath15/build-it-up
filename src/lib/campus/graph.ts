@@ -113,7 +113,7 @@ function search(from: string, to: string, opt: RouteOptions, useHeuristic: boole
   }
   if (!g.has(to)) return null;
   const ids = [to];
-  while (ids[0] !== from) ids.unshift(prev.get(ids[0])!);
+  while (ids[0] !== from) ids.unshift(prev.get(ids[0]!)!);
   const path = ids.map((id) => nodes.get(id)!);
   const distance = g.get(to)!;
   return { path, distance, etaSec: distance / WALK, visited: closedSet.size, runtimeMs: performance.now() - t0, instructions: describe(path) };
@@ -125,7 +125,7 @@ export const dijkstra = (f: string, t: string, o: RouteOptions) => search(f, t, 
 function describe(path: GNode[]): string[] {
   const out: string[] = [];
   for (let i = 1; i < path.length; i++) {
-    const p = path[i - 1], n = path[i];
+    const p = path[i - 1]!, n = path[i]!;
     if (n.kind === "entrance") out.push(`Walk outdoors to ${n.label}.`);
     else if (p.kind === "entrance" && n.kind === "corridor") out.push(`Enter ${buildingById(n.building!).name}.`);
     else if (p.kind === "stairs" && n.kind === "stairs") out.push(`Take the stairs ${n.floor! > p.floor! ? "up" : "down"} to the ${floorLabel(n.floor!).toLowerCase()}.`);

@@ -10,7 +10,7 @@ export interface Room {
   code: string;
   name: string;
   type: RoomType;
-  department?: string;
+  department?: string | undefined;
   building: string;
   floor: number;
   status: Status;
