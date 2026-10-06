@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- Campus data and routing live in src/lib/campus (seeded in-memory, A*/Dijkstra share one graph) — keeps one graph model until a database replaces the seed.
