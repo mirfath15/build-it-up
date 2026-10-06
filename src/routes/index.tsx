@@ -13,6 +13,8 @@ export const Route = createFileRoute("/")({
       { title: "Campus Navigator AI — Velammal Engineering College" },
       { name: "description", content: "Find rooms, labs and offices across VEC Chennai with step-by-step indoor and outdoor directions." },
       { property: "og:title", content: "Campus Navigator AI — VEC Chennai" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { property: "og:description", content: "Search rooms and get A* routes with an accessible, stair-free mode." },
     ],
   }),
