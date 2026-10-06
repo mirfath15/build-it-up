@@ -126,12 +126,12 @@ function describe(path: GNode[]): string[] {
   const out: string[] = [];
   for (let i = 1; i < path.length; i++) {
     const p = path[i - 1]!, n = path[i]!;
-    if (n.kind === "entrance") out.push(`Walk outdoors to ${n.label}.`);
+    if (p.kind === "corridor" && n.kind === "entrance") out.push(`Exit ${buildingById(p.building!).name}.`);
+    else if (n.kind === "entrance") out.push(`Walk outdoors to ${n.label}.`);
     else if (p.kind === "entrance" && n.kind === "corridor") out.push(`Enter ${buildingById(n.building!).name}.`);
     else if (p.kind === "stairs" && n.kind === "stairs") out.push(`Take the stairs ${n.floor! > p.floor! ? "up" : "down"} to the ${floorLabel(n.floor!).toLowerCase()}.`);
     else if (p.kind === "lift" && n.kind === "lift") out.push(`Take the lift to the ${floorLabel(n.floor!).toLowerCase()}.`);
     else if (n.kind === "room") out.push(`Arrive at ${n.label}.`);
-    else if (p.kind === "corridor" && n.kind === "entrance") out.push(`Exit ${buildingById(p.building!).name}.`);
   }
   return out;
 }
