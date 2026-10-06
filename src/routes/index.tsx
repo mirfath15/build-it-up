@@ -52,7 +52,7 @@ function Index() {
   function runAssistant(text: string) {
     const it = parseIntent(text);
     if (!it.matches.length) { setReply("I couldn't find that place in the current campus data."); return; }
-    const room = it.matches[0];
+    const room = it.matches[0]!;
     const b = buildingById(room.building);
     if (it.accessible) setAccessible(true);
     if (it.intent === "navigate") {
